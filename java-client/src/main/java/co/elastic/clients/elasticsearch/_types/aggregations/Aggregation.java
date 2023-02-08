@@ -2520,6 +2520,10 @@ public class Aggregation implements OpenTaggedUnion<Aggregation.Kind, Object>, J
 			return new Aggregation(this);
 		}
 
+		protected void force(){
+			_force();
+		}
+
 		public class ContainerBuilder implements ObjectBuilder<Aggregation> {
 
 			/**
@@ -2580,6 +2584,11 @@ public class Aggregation implements OpenTaggedUnion<Aggregation.Kind, Object>, J
 
 			public Aggregation build() {
 				return Builder.this.build();
+			}
+
+			public ContainerBuilder force() {
+				Builder.this.force();
+				return this;
 			}
 		}
 	}

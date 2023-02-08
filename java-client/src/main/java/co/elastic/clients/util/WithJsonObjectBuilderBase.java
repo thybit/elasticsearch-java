@@ -36,7 +36,6 @@ import jakarta.json.stream.JsonParser;
  * the mapper has a deserializer attribute for that generic parameter's name.
  */
 public abstract class WithJsonObjectBuilderBase<B> extends ObjectBuilderBase implements WithJson<B> {
-
     protected abstract B self();
 
     @Override

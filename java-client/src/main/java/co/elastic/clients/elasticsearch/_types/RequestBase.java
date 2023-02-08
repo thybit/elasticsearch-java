@@ -53,6 +53,12 @@ public abstract class RequestBase {
 	public abstract static class AbstractBuilder<BuilderT extends AbstractBuilder<BuilderT>>
 			extends
 				WithJsonObjectBuilderBase<BuilderT> {
+
+		public final BuilderT force() {
+			_force();
+			return self();
+		}
+
 		protected abstract BuilderT self();
 
 	}

@@ -132,6 +132,11 @@ public abstract class QueryBase implements JsonpSerializable {
 			return self();
 		}
 
+		public final BuilderT force() {
+			_force();
+			return self();
+		}
+
 		protected abstract BuilderT self();
 
 	}

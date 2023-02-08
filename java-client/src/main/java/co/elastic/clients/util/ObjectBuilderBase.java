@@ -40,6 +40,10 @@ public class ObjectBuilderBase {
         this._used = true;
     }
 
+    protected void _force() {
+        this._used = false;
+    }
+
     //----- List utilities
 
     /** A private extension of ArrayList so that we can recognize our own creations */

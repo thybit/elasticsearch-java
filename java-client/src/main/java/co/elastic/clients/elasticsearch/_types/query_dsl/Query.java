@@ -1796,6 +1796,10 @@ public class Query implements OpenTaggedUnion<Query.Kind, Object>, AggregationVa
 			return new Query(this);
 		}
 
+		public ObjectBuilder<Query> force(){
+			_force();
+			return this;
+		}
 	}
 
 	protected static void setupQueryDeserializer(ObjectDeserializer<Builder> op) {

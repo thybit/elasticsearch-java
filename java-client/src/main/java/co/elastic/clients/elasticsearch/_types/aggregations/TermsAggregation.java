@@ -88,6 +88,9 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 	private final List<NamedValue<SortOrder>> order;
 
 	@Nullable
+	private final SortOrder sortOrder;
+
+	@Nullable
 	private final Script script;
 
 	@Nullable
@@ -123,6 +126,7 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 		this.showTermDocCountError = builder.showTermDocCountError;
 		this.size = builder.size;
 		this.format = builder.format;
+		this.sortOrder = builder.sortOrder;
 
 	}
 
@@ -241,6 +245,11 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 		return this.script;
 	}
 
+	@Nullable
+	public final SortOrder sortOrder(){
+		return this.sortOrder;
+	}
+
 	/**
 	 * API name: {@code shard_size}
 	 */
@@ -336,6 +345,12 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 			generator.writeEnd();
 
 		}
+
+		if(this.sortOrder != null){
+			generator.writeKey("order");
+			this.sortOrder.serialize(generator, mapper);
+		}
+
 		if (this.script != null) {
 			generator.writeKey("script");
 			this.script.serialize(generator, mapper);
@@ -405,6 +420,9 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 
 		@Nullable
 		private List<NamedValue<SortOrder>> order;
+
+		@Nullable
+		private SortOrder sortOrder;
 
 		@Nullable
 		private Script script;
@@ -571,6 +589,11 @@ public class TermsAggregation extends BucketAggregationBase implements Aggregati
 		 */
 		public final Builder order(NamedValue<SortOrder> value, NamedValue<SortOrder>... values) {
 			this.order = _listAdd(this.order, value, values);
+			return this;
+		}
+
+		public final Builder sortOrder(SortOrder sortOrder){
+			this.sortOrder = sortOrder;
 			return this;
 		}
 
